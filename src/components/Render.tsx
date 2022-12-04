@@ -10,6 +10,7 @@ const Day = ({ filename, solver }: { filename: string; solver: string }) => {
 
   return results.data ? (
     <div>
+      <div>Solver</div>
       <div>{`Result: ${results.data.result}`}</div>
       <div>{`Time ${results.data.time}`}</div>
     </div>
@@ -20,9 +21,11 @@ const Day = ({ filename, solver }: { filename: string; solver: string }) => {
 
 export const Render = ({ day }: { day: string }) => {
   return day ? (
-    <div>
+    <div className="text-white">
       <Day filename={`example-day${day}.txt`} solver={`day${day}`} />
       <Day filename={`day${day}.txt`} solver={`day${day}`} />
+      <Day filename={`example-day${day}.txt`} solver={`day${day}b`} />
+      <Day filename={`day${day}.txt`} solver={`day${day}b`} />
     </div>
   ) : null;
 };
