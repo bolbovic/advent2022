@@ -1,9 +1,11 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Menu, { daysComponents } from "../../components/Menu";
+import Menu from "../../components/Menu";
+import Render from "../../components/Render";
 
-const DayPage: NextPage<{ day: string }> = ({ day }) => {
-  const id = (parseInt(day) || 1) - 1;
+const DayPage: NextPage<{ day: string }> = ({ day, ...p }) => {
+  console.log(day);
+  console.log(p);
   return (
     <>
       <Head>
@@ -14,7 +16,7 @@ const DayPage: NextPage<{ day: string }> = ({ day }) => {
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
             <Menu />
-            {daysComponents[id]}
+            <Render day={day} />
           </div>
         </div>
       </main>
@@ -23,3 +25,8 @@ const DayPage: NextPage<{ day: string }> = ({ day }) => {
 };
 
 export default DayPage;
+
+export const getServerSideProps = ({ params }) => {
+  console.log(params);
+  return { props: params };
+};

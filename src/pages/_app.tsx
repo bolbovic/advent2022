@@ -5,6 +5,7 @@ import { trpc } from "../utils/trpc";
 import "../styles/globals.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+  console.log("pageProps?", pageProps);
   return <Component {...pageProps} />;
 };
 
