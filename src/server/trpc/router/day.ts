@@ -6,6 +6,8 @@ import day1Solver from "../solvers/day1";
 import day1bSolver from "../solvers/day1b";
 import day2Solver from "../solvers/day2";
 import day2bSolver from "../solvers/day2b";
+import day3Solver from "../solvers/day3";
+import day3bSolver from "../solvers/day3b";
 
 type Solver<T = number | string> = (input: string) => T;
 function runday<T = number | string>(
@@ -16,9 +18,8 @@ function runday<T = number | string>(
     __dirname + "/../../../../../public/puzzles/" + filename
   );
   const start = new Date().getTime();
-  const result = fct(input);
+  const result = (fct ?? (() => -1))(input);
   const end = new Date().getTime();
-  console.log(start, end);
   return {
     result,
     time: end - start,
@@ -30,6 +31,8 @@ const solvers: Record<string, (_: string) => number | string> = {
   day1b: day1bSolver,
   day2: day2Solver,
   day2b: day2bSolver,
+  day3: day3Solver,
+  day3b: day3bSolver,
 };
 export const dayRouter = router({
   execDay: publicProcedure
@@ -37,8 +40,4 @@ export const dayRouter = router({
     .query(({ input }) =>
       runday(solvers[input.solver] as Solver, input.filename)
     ),
-  day1: publicProcedure.query(() => runday(day1Solver, "puzzles/day1.txt")),
-  day1Example: publicProcedure.query(() =>
-    runday(day1Solver, "puzzles/example-day1.txt")
-  ),
 });
