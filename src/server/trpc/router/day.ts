@@ -4,6 +4,8 @@ import { z } from "zod";
 import { router, publicProcedure } from "../trpc";
 import day1Solver from "../solvers/day1";
 import day1bSolver from "../solvers/day1b";
+import day2Solver from "../solvers/day2";
+import day2bSolver from "../solvers/day2b";
 
 type Solver<T = number | string> = (input: string) => T;
 function runday<T = number | string>(
@@ -26,6 +28,8 @@ function runday<T = number | string>(
 const solvers: Record<string, (_: string) => number | string> = {
   day1: day1Solver,
   day1b: day1bSolver,
+  day2: day2Solver,
+  day2b: day2bSolver,
 };
 export const dayRouter = router({
   execDay: publicProcedure
