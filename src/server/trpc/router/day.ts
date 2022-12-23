@@ -8,6 +8,8 @@ import day2Solver from "../solvers/day2";
 import day2bSolver from "../solvers/day2b";
 import day3Solver from "../solvers/day3";
 import day3bSolver from "../solvers/day3b";
+import day4Solver from "../solvers/day4";
+import day4bSolver from "../solvers/day4b";
 
 type Solver<T = number | string> = (input: string) => T;
 function runday<T = number | string>(
@@ -33,6 +35,8 @@ const solvers: Record<string, (_: string) => number | string> = {
   day2b: day2bSolver,
   day3: day3Solver,
   day3b: day3bSolver,
+  day4: day4Solver,
+  day4b: day4bSolver,
 };
 export const dayRouter = router({
   execDay: publicProcedure
