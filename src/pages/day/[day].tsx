@@ -3,9 +3,7 @@ import Head from "next/head";
 import Menu from "../../components/Menu";
 import Render from "../../components/Render";
 
-const DayPage: NextPage<{ day: string }> = ({ day, ...p }) => {
-  console.log(day);
-  console.log(p);
+const DayPage: NextPage<{ day: string }> = ({ day }) => {
   return (
     <>
       <Head>
@@ -31,6 +29,5 @@ const DayPage: NextPage<{ day: string }> = ({ day, ...p }) => {
 export default DayPage;
 
 export const getServerSideProps = ({ params }: GetServerSidePropsContext) => {
-  console.log(params);
   return { props: params };
 };

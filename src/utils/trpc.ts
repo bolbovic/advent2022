@@ -14,6 +14,18 @@ const getBaseUrl = () => {
 export const trpc = createTRPCNext<AppRouter>({
   config() {
     return {
+      queryClientConfig: {
+        defaultOptions: {
+          queries: {
+            networkMode:
+              process.env.NODE_ENV === "development" ? "always" : "online",
+          },
+          mutations: {
+            networkMode:
+              process.env.NODE_ENV === "development" ? "always" : "online",
+          },
+        },
+      },
       transformer: superjson,
       links: [
         loggerLink({

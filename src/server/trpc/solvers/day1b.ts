@@ -15,7 +15,6 @@ const day1bSolver = (input: string) => {
           break;
         }
       }
-      console.log(maxs, cur);
       cur = 0;
     }
   });

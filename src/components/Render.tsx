@@ -40,6 +40,8 @@ const expects: Record<string, number | string> = {
   day3b: 70,
   day4: 2,
   day4b: 4,
+  day5: "CMZ",
+  day5b: "MCD",
 };
 
 export const Render = ({ day }: { day: string }) => {

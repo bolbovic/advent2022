@@ -12,7 +12,6 @@ const day3Solver = (input: string) => {
         } else {
           points += c.charCodeAt(0) - "A".charCodeAt(0) + 27;
         }
-        console.log(c, c.charCodeAt(0), "a".charCodeAt(0), points);
         break;
       }
     }
